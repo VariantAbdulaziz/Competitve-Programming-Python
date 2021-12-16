@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # solution to https://www.hackerrank.com/challenges/grading/problem
+=======
+>>>>>>> 602e7c750bafc7d74cc8087365c1ad7e335159ec
 #!/bin/python3
 
 import math
