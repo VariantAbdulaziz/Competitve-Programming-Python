@@ -1,7 +1,7 @@
 # solution to https://leetcode.com/problems/find-target-indices-after-sorting-array/submissions/
 
 class Solution:
-    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+    def targetIndices(self, nums, target: int):
         # this is a two step process that needs sorting and searching
         # the result will be stored in the list below
         indicies = []
