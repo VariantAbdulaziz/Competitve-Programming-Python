@@ -1,4 +1,3 @@
-# solution to https://www.hackerrank.com/challenges/ctci-bubble-sort/problem
 #!/bin/python3
 
 import math
@@ -17,14 +16,17 @@ def countSwaps(a):
     # Write your code here
     n = len(a)
     numSwaps = 0
+    
+    m = n - 1
     i = 0
     while i < n:
         j = 0
-        while j < n - 1:
+        while j < m:
             if(a[j] > a[j + 1]):
                 a[j], a[j + 1] = a[j + 1], a[j]
                 numSwaps += 1
             j += 1
+        m = m -1
         i += 1
         
     print(f"Array is sorted in {numSwaps} swaps.")
