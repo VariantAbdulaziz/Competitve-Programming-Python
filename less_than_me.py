@@ -1,7 +1,7 @@
  # solution to https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/submissions/
 
 class Solution:
-    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+    def smallerNumbersThanCurrent(self, nums):
         lessThanfrequencyArray = [0] * 101
         lessThanCount = [0] * len(nums)
         
