@@ -1,35 +1,33 @@
 TEST_CASES = int(input())
-def sumBinary(alist):
-    res = 0
-    for binary in alist:
-        if binary:
-            res += 1
 
-    return res
-
-def dfs(cache, n, s, binaryDeque, total, l, r, num):
-    if total == s:
-        return num
-    if l > r or total < s:
-        return n+1
-    if (l, r) in cache:
-        return cache[(l, r)]
+def solveBinaryDeque(binaryDeque, s):
+    if s > len(binaryDeque):
+        return -1
     
-    cache[(l, r)] = min(dfs(cache, n, s, binaryDeque, total-1 if binaryDeque[r] else total, l, r-1, num+1),
-                        dfs(cache, n, s, binaryDeque, total-1 if binaryDeque[l] else total, l+1, r, num+1))
-    
-    return cache[(l, r)]
+    largestWinThatSumToS = 0
+    winSum = 0
 
-ans = []
+    l = r = 0
+    while l < len(binaryDeque) and r < len(binaryDeque):
+        if winSum <= s:
+            winSum += binaryDeque[r]
+            if winSum == s:
+                largestWinThatSumToS = max(largestWinThatSumToS, r - l + 1)
+            r += 1
+        else:
+            winSum -= binaryDeque[l]
+            l += 1
+
+
+    return n - largestWinThatSumToS if largestWinThatSumToS != 0 else -1
+
+answers = [-1] * TEST_CASES
 
 for testCase in range(TEST_CASES):
     n, s = [int(order) for order in input().split()]
-    binaryDeque = [True if binary == "1" else False for binary in input().split()]
+    binaryDeque = [1 if binary == "1" else 0 for binary in input().split()]
 
-    total = sumBinary(binaryDeque)
-    cache = {}
-    res = dfs(cache, n, s, binaryDeque, total, 0, n - 1, 0)
-    ans.append(res if res != n+1 else -1)
+    answers[testCase] = solveBinaryDeque(binaryDeque, s)
 
-for answer in ans:
+for answer in answers:
     print(answer)
